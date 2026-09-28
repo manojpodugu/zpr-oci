@@ -73,3 +73,6 @@ OUTCOME:
 
 CONCLUSION: Both must allow the communication. One denial is enough to block it.
 
+--> SIMPLY A "LOGICAL AND".
+--> A logical AND is a mathematical and programming operation that returns true only when all of its input conditions are true.
+
