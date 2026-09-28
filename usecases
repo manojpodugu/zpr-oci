@@ -45,5 +45,31 @@ NOTE: ZPR doesn't override an NSG allow, and an NSG allow doesn't override a ZPR
 
 USECASE 2: NSG DENY AND ZPR ALLOW.
 =================================
+App-A ─────────► DB-B
 
+NSG:
+Client A → Client B : ❌ DENY
+
+ZPR:
+Client A → Client B : ✅ ALLOW
+
+
+RESULT:
+=======
+NSG   → DENY
+ZPR   → ALLOW
+──────────────
+Final → ❌ DENY
+##############################################################################################################################################################################
+OUTCOME: 
+=======
+
+| NSG     | ZPR     | Result     |
+| ------- | ------- | ---------- |
+| ✅ Allow | ✅ Allow | ✅ Allowed* |
+| ✅ Allow | ❌ Deny  | ❌ Denied   |
+| ❌ Deny  | ✅ Allow | ❌ Denied   |
+| ❌ Deny  | ❌ Deny  | ❌ Denied   |
+
+CONCLUSION: Both must allow the communication. One denial is enough to block it.
 
