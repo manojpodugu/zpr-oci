@@ -1,0 +1,33 @@
+Think of the controls as conditions that all need to permit the traffic:
+------------------------------------------------------------------------
+
+              App-A
+                │
+                ▼
+        ┌─────────────────┐
+        │ Routing works?  │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │ NSG/SL allows?  │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │ ZPR allows?     │
+        └────────┬────────┘
+                 │
+                 ▼
+               DB-B
+
+If ZPR denies the A→B communication:
+------------------------------------
+App-A ──X──► DB-B
+       ZPR DENY
+
+the connection does not succeed, even if the NSG permits it.
+
+
+NOTE: ZPR doesn't override an NSG allow, and an NSG allow doesn't override a ZPR restriction. The traffic needs to satisfy the applicable network and ZPR controls.
+
