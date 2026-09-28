@@ -1,3 +1,15 @@
+SCENERIO:
+========
+let us suppose, we have 4 instances in a subnet. 2 instances belongs to one client and 2 instances belong to another client. one instance in that 2 instances is app and 
+another is database respectively. now we have implemented NSG's between 2 of the client instances to communicate with each other. and also a ZPR policy to restrict the 
+communication between the client instances. client A instances can communicate within them seamlessly. so, don't consider connections within the same client. also ignore
+the zpr within the same client. now ultimately what will happen ? 
+
+
+##############################################################################################################################################################################
+
+USECASE 1: NSG ALLOW AND ZPR DENY.
+==================================
 Think of the controls as conditions that all need to permit the traffic:
 ------------------------------------------------------------------------
 
@@ -30,4 +42,8 @@ the connection does not succeed, even if the NSG permits it.
 
 
 NOTE: ZPR doesn't override an NSG allow, and an NSG allow doesn't override a ZPR restriction. The traffic needs to satisfy the applicable network and ZPR controls.
+
+USECASE 2: NSG DENY AND ZPR ALLOW.
+=================================
+
 
