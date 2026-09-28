@@ -1,0 +1,9 @@
+Route Table
+     ↓
+Security List
+     ↓
+NSG
+     ↓
+ZPR Policy
+     ↓
+Destination
